@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moodz Lounge</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Courier New", monospace;
+      background: linear-gradient(#120f3d, #24145f, #3b1f78);
+      color: #fff8d6;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(#fff 1px, transparent 1px),
+        radial-gradient(#ffe27a 1px, transparent 1px);
+      background-size: 40px 40px, 70px 70px;
+      animation: twinkle 4s infinite alternate;
+      z-index: -2;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.4; }
+      to { opacity: 1; }
+    }
+
+    .cloud {
+      position: fixed;
+      width: 120px;
+      height: 45px;
+      background: #ffffff;
+      border: 4px solid #c9b6ff;
+      border-radius: 0;
+      opacity: 0.9;
+      z-index: -1;
+      animation: drift 18s linear infinite;
+    }
+
+    .cloud:before,
+    .cloud:after {
+      content: "";
+      position: absolute;
+      background: #ffffff;
+      border: 4px solid #c9b6ff;
+    }
+
+    .cloud:before {
+      width: 45px;
+      height: 45px;
+      left: 15px;
+      top: -28px;
+    }
+
+    .cloud:after {
+      width: 55px;
+      height: 55px;
+      right: 15px;
+      top: -38px;
+    }
+
+    .cloud.one {
+      top: 70px;
+      left: -130px;
+    }
+
+    .cloud.two {
+      top: 250px;
+      left: -220px;
+      animation-delay: 7s;
+      transform: scale(0.8);
+    }
+
+    @keyframes drift {
+      from { transform: translateX(0); }
+      to { transform: translateX(120vw); }
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 45px 18px;
+    }
+
+    .game-card {
+      background: rgba(18, 15, 61, 0.88);
+      border: 5px solid #fff8d6;
+      box-shadow: 0 0 0 5px #ff9bd2, 0 12px 0 #0b0826;
+      padding: 28px 18px;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin: 10px 0;
+      color: #ffe27a;
+      text-shadow: 4px 4px #ff5fb7;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      color: #9fffd0;
+      text-shadow: 3px 3px #111;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #ffd6f2;
+      margin-bottom: 28px;
+    }
+
+    .star {
+      width: 110px;
+      height: 110px;
+      background: #ffe27a;
+      margin: 10px auto 25px;
+      clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+      );
+      animation: float 2.5s ease-in-out infinite;
+      filter: drop-shadow(6px 6px #ff9bd2);
+      position: relative;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
+    }
+
+    .dialogue {
+      background: #fff8d6;
+      color: #1b174f;
+      border: 4px solid #ff9bd2;
+      padding: 18px;
+      font-weight: bold;
+      line-height: 1.5;
+      margin: 20px auto;
+      max-width: 560px;
+      box-shadow: 6px 6px #0b0826;
+    }
+
+    .menu {
+      display: grid;
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    .button {
+      display: block;
+      background: #ff9bd2;
+      color: #1b174f;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 16px;
+      border: 4px solid #fff8d6;
+      box-shadow: 5px 5px #0b0826;
+      transition: 0.15s;
+    }
+
+    .button:hover {
+      transform: translateY(-4px);
+      background: #ffe27a;
+    }
+
+    section {
+      scroll-margin-top: 20px;
+    }
+
+    .mini-card {
+      background: rgba(255, 248, 214, 0.95);
+      color: #1b174f;
+      border: 4px solid #9fffd0;
+      padding: 18px;
+      margin: 18px 0;
+      box-shadow: 5px 5px #0b0826;
+      font-weight: bold;
+    }
+
+    .quote {
+      font-size: 20px;
+      color: #5f2eea;
+    }
+
+    .footer {
+      font-size: 13px;
+      color: #ffd6f2;
+      padding: 30px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stars"></div>
+  <div class="cloud one"></div>
+  <div class="cloud two"></div>
+
+  <main class="container">
+
+    <div class="game-card">
+      <div class="star"></div>
+
+      <h1>MOODZ LOUNGE</h1>
+      <p class="subtitle">Take what you need today.</p>
+
+      <div class="dialogue">
+        💬 Hey, Traveler!<br />
+        I’m Star. I’m really glad you stopped by.<br />
+        This little world was made for your soft days, hard days, and healing days.
+      </div>
+
+      <div class="menu">
+        <a class="button" href="#daily">▶ DAILY BOOST</a>
+        <a class="button" href="#breathe">🌿 BREATHE</a>
+        <a class="button" href="#journal">📖 JOURNAL</a>
+        <a class="button" href="#music">🎵 MUSIC</a>
+        <a class="button" href="#surprise">🎁 SURPRISE ME</a>
+        <a class="button" href="#support">💛 SUPPORT</a>
+      </div>
+    </div>
+
+    <section id="daily" class="game-card">
+      <h2>⭐ Daily Boost</h2>
+      <div class="mini-card">
+        Today’s Buff: <br />
+        <span class="quote">+10 Courage</span>
+      </div>
+      <p class="quote" id="dailyQuote">
+        You are doing better than you think.
+      </p>
+      <button class="button" onclick="newQuote()">Give me another ✨</button>
+    </section>
+
+    <section id="breathe" class="game-card">
+      <h2>🌿 Breathe With Star</h2>
+      <div class="mini-card">
+        Inhale for 4.<br />
+        Hold for 4.<br />
+        Exhale for 6.
+      </div>
+      <p>Repeat this three times. You don’t have to rush.</p>
+    </section>
+
+    <section id="journal" class="game-card">
+      <h2>📖 Journal Prompt</h2>
+      <div class="mini-card" id="journalPrompt">
+        What is one thing I’m proud of myself for today?
+      </div>
+      <button class="button" onclick="newPrompt()">New Prompt 🎲</button>
+    </section>
+
+    <section id="music" class="game-card">
+      <h2>🎵 Chill Zone</h2>
+      <p>Pick your vibe and let yourself breathe.</p>
+      <div class="menu">
+        <a class="button" href="https://www.youtube.com/results?search_query=lofi+relaxing+music" target="_blank">🌙 Lofi</a>
+        <a class="button" href="https://www.youtube.com/results?search_query=rain+sounds+relaxing" target="_blank">☔ Rain Sounds</a>
+        <a class="button" href="https://www.youtube.com/results?search_query=soft+piano+music+relaxing" target="_blank">🎹 Soft Piano</a>
+      </div>
+    </section>
+
+    <section id="surprise" class="game-card">
+      <h2>🎁 Surprise Me</h2>
+      <div class="mini-card" id="surpriseBox">
+        Achievement Unlocked: You chose to keep going today.
+      </div>
+      <button class="button" onclick="newSurprise()">Open Gift 🎁</button>
+    </section>
+
+    <section id="support" class="game-card">
+      <h2>💛 Support</h2>
+      <div class="mini-card">
+        You matter. You are not a burden.
+      </div>
+      <p>
+        If you’re in immediate danger, call emergency services.
+        In the U.S., call or text <strong>988</strong> for crisis support.
+      </p>
+    </section>
+
+    <div class="footer">
+      ⭐ Moodz by Star · The Moodz Lounge ⭐<br />
+      Made for soft hearts, hard days, and healing.
+    </div>
+
+  </main>
+
+  <script>
+    const quotes = [
+      "You are doing better than you think.",
+      "You do not have to fix your whole life today.",
+      "Rest is part of the quest.",
+      "You are allowed to start over.",
+      "Small progress still counts.",
+      "Your feelings are real, but they are not forever.",
+      "You survived yesterday. That matters.",
+      "You are not behind. You are becoming.",
+      "One soft step is still a step.",
+      "You are worthy even when you are tired."
+    ];
+
+    const prompts = [
+      "What is one thing I’m proud of myself for today?",
+      "What do I need to release?",
+      "What would I tell a friend who felt this way?",
+      "What is one tiny thing I can do next?",
+      "What made me smile recently?",
+      "What does my body need right now?",
+      "What am I learning about myself?",
+      "Where can I be softer with myself?"
+    ];
+
+    const surprises = [
+      "Achievement Unlocked: You chose to keep going today.",
+      "You found: +5 Hope.",
+      "Star saved this for you: You are loved here.",
+      "Rare Item Found: A little peace.",
+      "Quest Reminder: Drink some water.",
+      "Level Up: You made it through another moment.",
+      "Inventory Added: Courage, Rest, Patience.",
+      "Star says: I’m proud of you."
+    ];
+
+    function newQuote() {
+      const random = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById("dailyQuote").innerText = random;
+    }
+
+    function newPrompt() {
+      const random = prompts[Math.floor(Math.random() * prompts.length)];
+      document.getElementById("journalPrompt").innerText = random;
+    }
+
+    function newSurprise() {
+      const random = surprises[Math.floor(Math.random() * surprises.length)];
+      document.getElementById("surpriseBox").innerText = random;
+    }
+  </script>
+</body>
+</html>
