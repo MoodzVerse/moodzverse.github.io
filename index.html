@@ -1,189 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Moodz Lounge</title>
-
-<style>
-*{box-sizing:border-box}
-
-html,body{
-  margin:0;
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  background:#05051a;
-  font-family:"Courier New",monospace;
-}
-
-.home{
-  position:relative;
-  width:100vw;
-  height:100vh;
-  background:url("file_00000000bbc871fdb872c1fc38726799.png") center/contain no-repeat;
-  background-color:#05051a;
-  overflow:hidden;
-}
-
-/* subtle twinkles only */
-.twinkle{
-  position:absolute;
-  color:#fff7a8;
-  font-size:13px;
-  text-shadow:0 0 8px #fff;
-  animation:twinkle 1.8s infinite alternate;
-  pointer-events:none;
-}
-
-@keyframes twinkle{
-  from{opacity:.15;transform:scale(.7)}
-  to{opacity:.85;transform:scale(1.15)}
-}
-
-/* waterfall motion overlay */
-.water{
-  position:absolute;
-  right:8.5%;
-  top:45%;
-  width:10%;
-  height:14%;
-  background:repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,.9) 0px,
-    rgba(120,235,255,.8) 7px,
-    rgba(15,130,230,.75) 14px
-  );
-  opacity:.32;
-  mix-blend-mode:screen;
-  animation:pour .35s linear infinite;
-  clip-path:polygon(15% 0,100% 0,86% 100%,0 100%);
-  pointer-events:none;
-}
-
-@keyframes pour{
-  to{background-position-y:28px}
-}
-
-/* invisible menu buttons */
-.hotspot{
-  position:absolute;
-  display:block;
-  border-radius:8px;
-}
-
-.hotspot:active{
-  background:rgba(255,255,255,.13);
-}
-
-.start{left:14%;top:68%;width:35%;height:6%}
-.journal{left:52%;top:68%;width:35%;height:6%}
-.daily{left:14%;top:75%;width:35%;height:6%}
-.music{left:52%;top:75%;width:35%;height:6%}
-.breathe{left:14%;top:82%;width:35%;height:6%}
-.surprise{left:52%;top:82%;width:35%;height:6%}
-
-/* popup box instead of scrolling */
-.popup{
-  display:none;
-  position:absolute;
-  left:8%;
-  right:8%;
-  bottom:7%;
-  background:#fff0d4;
-  color:#1b1238;
-  border:5px solid #ff8ccf;
-  box-shadow:6px 6px #000;
-  padding:18px;
-  text-align:center;
-  font-weight:bold;
-  z-index:5;
-}
-
-.popup button{
-  margin-top:12px;
-  padding:10px 16px;
-  background:#ff8ccf;
-  border:3px solid #1b1238;
-  font-family:"Courier New",monospace;
-  font-weight:bold;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moodz Lounge</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<div class="home">
-  <div id="twinkleLayer"></div>
-  <div class="water"></div>
+  <main class="game-screen" id="gameScreen">
+    <div id="twinkleLayer"></div>
 
-  <a class="hotspot start" href="#" onclick="showPopup('⭐ Start Here','Welcome, Traveler. This is your save point.'); return false;"></a>
-  <a class="hotspot journal" href="#" onclick="showPopup('📖 Journal', randomPrompt()); return false;"></a>
-  <a class="hotspot daily" href="#" onclick="showPopup('💗 Daily Boost', randomQuote()); return false;"></a>
-  <a class="hotspot music" href="#" onclick="showPopup('🎵 Music','Search lofi relaxing music or rain sounds when you need a soft reset.'); return false;"></a>
-  <a class="hotspot breathe" href="#" onclick="showPopup('🌿 Breathe','Inhale 4. Hold 4. Exhale 6. Do it three times.'); return false;"></a>
-  <a class="hotspot surprise" href="#" onclick="showPopup('🎁 Surprise Me', randomGift()); return false;"></a>
+    <a class="hotspot start" href="start.html" onclick="slideToPage(event, 'start.html')"></a>
+    <a class="hotspot journal" href="journal.html" onclick="slideToPage(event, 'journal.html')"></a>
+    <a class="hotspot daily" href="boost.html" onclick="slideToPage(event, 'boost.html')"></a>
+    <a class="hotspot music" href="music.html" onclick="slideToPage(event, 'music.html')"></a>
+    <a class="hotspot breathe" href="breathe.html" onclick="slideToPage(event, 'breathe.html')"></a>
+    <a class="hotspot surprise" href="surprise.html" onclick="slideToPage(event, 'surprise.html')"></a>
+  </main>
 
-  <div class="popup" id="popup">
-    <h3 id="popupTitle"></h3>
-    <p id="popupText"></p>
-    <button onclick="closePopup()">Close</button>
-  </div>
-</div>
-
-<script>
-const quotes=[
-  "You are doing better than you think.",
-  "Rest is part of the quest.",
-  "Small progress still counts.",
-  "You can begin again.",
-  "You are allowed to move slowly."
-];
-
-const prompts=[
-  "What do I need today?",
-  "What can I release?",
-  "What am I proud of?",
-  "What would I tell a friend right now?",
-  "What would make today feel softer?"
-];
-
-const gifts=[
-  "You found +5 Hope.",
-  "Rare item found: peace.",
-  "Inventory added: courage.",
-  "Achievement unlocked: you kept going.",
-  "Star is proud of you."
-];
-
-function pick(list){
-  return list[Math.floor(Math.random()*list.length)];
-}
-
-function randomQuote(){return pick(quotes)}
-function randomPrompt(){return pick(prompts)}
-function randomGift(){return pick(gifts)}
-
-function showPopup(title,text){
-  document.getElementById("popupTitle").innerText=title;
-  document.getElementById("popupText").innerText=text;
-  document.getElementById("popup").style.display="block";
-}
-
-function closePopup(){
-  document.getElementById("popup").style.display="none";
-}
-
-for(let i=0;i<12;i++){
-  const star=document.createElement("div");
-  star.className="twinkle";
-  star.innerText=Math.random()>.5 ? "✦" : "✧";
-  star.style.left=Math.random()*95+"%";
-  star.style.top=Math.random()*30+"%";
-  star.style.animationDelay=Math.random()*2+"s";
-  document.getElementById("twinkleLayer").appendChild(star);
-}
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
