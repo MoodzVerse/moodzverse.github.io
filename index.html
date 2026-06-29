@@ -172,9 +172,7 @@ button,.link-btn{
   <div class="water"></div>
   <div class="star-glow"></div>
 
-  <div class="bubble-text" id="bubbleText"></div>
-  <div class="sign-text" id="signText"></div>
-  <div class="xp-text" id="xpText"></div>
+  
 
   <a class="hotspot start" href="#start"></a>
   <a class="hotspot journal" href="#journal"></a>
@@ -289,8 +287,7 @@ function pick(list){
 }
 
 function loadRandomPage(){
-  bubbleText.innerHTML = pick(bubbleMessages);
-  signText.innerHTML = pick(signMessages);
+  
   quote.innerText = pick(quotes);
   prompt.innerText = pick(prompts);
   gift.innerText = pick(gifts);
