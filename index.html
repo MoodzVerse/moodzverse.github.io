@@ -1,24 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moodz Lounge</title>
-  <link rel="stylesheet" href="style.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moodz Lounge</title>
+<style>
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #05051a;
+}
+
+.game-screen {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("moodz-home.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fff7a8;
+  box-shadow:
+    0 -6px #fff7a8,
+    0 6px #fff7a8,
+    -6px 0 #fff7a8,
+    6px 0 #fff7a8;
+  animation: twinkle 1.5s infinite steps(2);
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: .2; transform: scale(.7); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+</style>
 </head>
 <body>
 
-  <main class="game-screen" id="gameScreen">
-    <div id="twinkleLayer"></div>
+<div class="game-screen" id="screen"></div>
 
-    <a class="hotspot start" href="start.html" onclick="slideToPage(event, 'start.html')"></a>
-    <a class="hotspot journal" href="journal.html" onclick="slideToPage(event, 'journal.html')"></a>
-    <a class="hotspot daily" href="boost.html" onclick="slideToPage(event, 'boost.html')"></a>
-    <a class="hotspot music" href="music.html" onclick="slideToPage(event, 'music.html')"></a>
-    <a class="hotspot breathe" href="breathe.html" onclick="slideToPage(event, 'breathe.html')"></a>
-    <a class="hotspot surprise" href="surprise.html" onclick="slideToPage(event, 'surprise.html')"></a>
-  </main>
+<script>
+const screen = document.getElementById("screen");
 
-  <script src="script.js"></script>
+for (let i = 0; i < 20; i++) {
+  const star = document.createElement("div");
+  star.className = "star";
+  star.style.left = Math.random() * 95 + "%";
+  star.style.top = Math.random() * 35 + "%";
+  star.style.animationDelay = Math.random() * 2 + "s";
+  screen.appendChild(star);
+}
+</script>
+
 </body>
 </html>
