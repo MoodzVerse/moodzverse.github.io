@@ -120,4 +120,70 @@ html,body{
   <a class="hotspot start" href="#" onclick="showPopup('⭐ Start Here','Welcome, Traveler. This is your save point.'); return false;"></a>
   <a class="hotspot journal" href="#" onclick="showPopup('📖 Journal', randomPrompt()); return false;"></a>
   <a class="hotspot daily" href="#" onclick="showPopup('💗 Daily Boost', randomQuote()); return false;"></a>
- 
+  <a class="hotspot music" href="#" onclick="showPopup('🎵 Music','Search lofi relaxing music or rain sounds when you need a soft reset.'); return false;"></a>
+  <a class="hotspot breathe" href="#" onclick="showPopup('🌿 Breathe','Inhale 4. Hold 4. Exhale 6. Do it three times.'); return false;"></a>
+  <a class="hotspot surprise" href="#" onclick="showPopup('🎁 Surprise Me', randomGift()); return false;"></a>
+
+  <div class="popup" id="popup">
+    <h3 id="popupTitle"></h3>
+    <p id="popupText"></p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+</div>
+
+<script>
+const quotes=[
+  "You are doing better than you think.",
+  "Rest is part of the quest.",
+  "Small progress still counts.",
+  "You can begin again.",
+  "You are allowed to move slowly."
+];
+
+const prompts=[
+  "What do I need today?",
+  "What can I release?",
+  "What am I proud of?",
+  "What would I tell a friend right now?",
+  "What would make today feel softer?"
+];
+
+const gifts=[
+  "You found +5 Hope.",
+  "Rare item found: peace.",
+  "Inventory added: courage.",
+  "Achievement unlocked: you kept going.",
+  "Star is proud of you."
+];
+
+function pick(list){
+  return list[Math.floor(Math.random()*list.length)];
+}
+
+function randomQuote(){return pick(quotes)}
+function randomPrompt(){return pick(prompts)}
+function randomGift(){return pick(gifts)}
+
+function showPopup(title,text){
+  document.getElementById("popupTitle").innerText=title;
+  document.getElementById("popupText").innerText=text;
+  document.getElementById("popup").style.display="block";
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+}
+
+for(let i=0;i<12;i++){
+  const star=document.createElement("div");
+  star.className="twinkle";
+  star.innerText=Math.random()>.5 ? "✦" : "✧";
+  star.style.left=Math.random()*95+"%";
+  star.style.top=Math.random()*30+"%";
+  star.style.animationDelay=Math.random()*2+"s";
+  document.getElementById("twinkleLayer").appendChild(star);
+}
+</script>
+
+</body>
+</html>
