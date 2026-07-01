@@ -1,129 +1,149 @@
-* {
-  box-sizing: border-box;
-}
-
-html,
 body {
   margin: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: #05051a;
-  font-family: "Courier New", monospace;
+  background: #08051f;
+  font-family: monospace;
+  color: white;
 }
 
 .game-screen {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-image: url("moodz-home.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  overflow: hidden;
+  min-height: 100vh;
+  padding: 15px;
+  background: linear-gradient(#07143b, #0b1f55, #1d5a2b);
+  text-align: center;
+  box-sizing: border-box;
+  border: 6px solid #5b2b73;
 }
 
-/* 8-bit twinkling stars */
-#twinkleLayer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  background: #080808;
+  border: 4px solid #6b3a7d;
+  padding: 10px 18px;
+  font-size: 20px;
 }
 
-.pixel-star {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: #fff7a8;
-  image-rendering: pixelated;
-  box-shadow:
-    0 -6px #fff7a8,
-    0 6px #fff7a8,
-    -6px 0 #fff7a8,
-    6px 0 #fff7a8,
-    0 0 10px #fff7a8;
-  animation: pixelTwinkle var(--speed) steps(2, end) infinite;
+.logo {
+  font-size: 75px;
+  line-height: 0.9;
+  margin: 35px 0 10px;
+  color: #ff5f9e;
+  text-shadow: 5px 5px 0 black;
 }
 
-@keyframes pixelTwinkle {
+.logo span {
+  color: #ffe7b8;
+}
+
+.tagline,
+.menu-title {
+  display: inline-block;
+  background: #151126;
+  border: 4px solid #ff6f9f;
+  padding: 10px 25px;
+  font-size: 24px;
+  margin: 12px;
+}
+
+.speech-bubble {
+  background: #ffe8c6;
+  color: black;
+  border: 5px solid black;
+  padding: 25px;
+  width: 360px;
+  margin: 25px auto 10px;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 6px 6px 0 black;
+}
+
+#typedText::after {
+  content: "|";
+  animation: blink 0.6s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.starry {
+  font-size: 120px;
+  animation: float 2s ease-in-out infinite;
+  filter: drop-shadow(6px 6px 0 black);
+}
+
+@keyframes float {
   0%, 100% {
-    opacity: 0.15;
-    transform: scale(0.7);
+    transform: translateY(0);
   }
 
   50% {
-    opacity: 1;
-    transform: scale(1.25);
+    transform: translateY(-25px);
   }
 }
 
-/* Invisible clickable menu areas */
-.hotspot {
-  position: absolute;
-  display: block;
-  z-index: 5;
-  border-radius: 10px;
+.sign {
+  background: #b06b2c;
+  color: black;
+  border: 5px solid #3b1d0c;
+  padding: 15px;
+  width: 250px;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 5px auto 20px;
 }
 
-.hotspot:active {
-  background: rgba(255, 255, 255, 0.14);
+.menu {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 25px;
+  max-width: 780px;
+  margin: 15px auto;
+  background: #3a1d0e;
+  border: 6px solid #140804;
+  padding: 25px;
 }
 
-/* Button positions */
-.start {
-  left: 14%;
-  top: 68%;
-  width: 35%;
-  height: 6%;
+.menu a {
+  background: #ffe8c6;
+  color: black;
+  text-decoration: none;
+  border: 4px solid #3b1d0c;
+  padding: 18px;
+  font-size: 26px;
+  font-weight: bold;
+  box-shadow: 5px 5px 0 #000;
 }
 
-.journal {
-  left: 52%;
-  top: 68%;
-  width: 35%;
-  height: 6%;
+.menu a:hover {
+  transform: translateY(-4px);
+  background: #ffd1e3;
 }
 
-.daily {
-  left: 14%;
-  top: 75%;
-  width: 35%;
-  height: 6%;
+.bottom-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  background: #080808;
+  border: 4px solid #6b3a7d;
+  padding: 14px;
+  font-size: 24px;
+  max-width: 850px;
+  margin: 25px auto 0;
 }
 
-.music {
-  left: 52%;
-  top: 75%;
-  width: 35%;
-  height: 6%;
+.xp {
+  width: 180px;
+  height: 24px;
+  background: #222;
+  border: 3px solid black;
 }
 
-.breathe {
-  left: 14%;
-  top: 82%;
-  width: 35%;
-  height: 6%;
-}
-
-.surprise {
-  left: 52%;
-  top: 82%;
-  width: 35%;
-  height: 6%;
-}
-
-/* Slide transition */
-.slide-out {
-  animation: slideOut 0.45s ease-in forwards;
-}
-
-@keyframes slideOut {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-100vw);
-  }
+.xp div {
+  width: 25%;
+  height: 100%;
+  background: #ff5f9e;
 }
