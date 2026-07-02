@@ -69,9 +69,87 @@ body {
 }
 
 .starry {
-  font-size: 120px;
+  width: 150px;
+  height: 150px;
+  background: #ffd83d;
+  position: relative;
+  margin: 10px auto;
+  clip-path: polygon(
+    50% 0%,
+    62% 35%,
+    100% 35%,
+    70% 57%,
+    82% 100%,
+    50% 75%,
+    18% 100%,
+    30% 57%,
+    0% 35%,
+    38% 35%
+  );
   animation: float 2s ease-in-out infinite;
-  filter: drop-shadow(6px 6px 0 black);
+  filter: drop-shadow(7px 7px 0 black);
+  image-rendering: pixelated;
+}
+
+.eye {
+  position: absolute;
+  width: 14px;
+  height: 28px;
+  background: black;
+  top: 65px;
+}
+
+.eye::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 8px;
+  background: white;
+  top: 4px;
+  left: 5px;
+}
+
+.eye-left {
+  left: 48px;
+}
+
+.eye-right {
+  right: 48px;
+}
+
+.cheek {
+  position: absolute;
+  width: 17px;
+  height: 10px;
+  background: #ff7bac;
+  top: 98px;
+}
+
+.cheek-left {
+  left: 32px;
+}
+
+.cheek-right {
+  right: 32px;
+}
+
+.mouth {
+  position: absolute;
+  width: 20px;
+  height: 18px;
+  background: black;
+  top: 93px;
+  left: 65px;
+}
+
+.mouth::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 7px;
+  background: #ff5f9e;
+  bottom: 0;
+  left: 4px;
 }
 
 @keyframes float {
