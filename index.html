@@ -1,76 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moodz Lounge</title>
-
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moodz Lounge</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
+  <main class="game-screen">
 
-    <main class="game-screen">
+    <div class="sky">
+      <div class="moon"></div>
+      <div class="stars"></div>
+    </div>
 
-        <!-- Top HUD -->
-        <header class="top-bar">
-            <div class="logo-small">MOODZ LOUNGE</div>
+    <section class="title-area">
+      <h1>MOODZ<br><span>LOUNGE</span></h1>
+      <p>Take What You Need Today</p>
+    </section>
 
-            <div class="stats">
-                <span>⭐ LVL 1</span>
-            </div>
-        </header>
+    <section class="starry-section">
+      <div class="speech-bubble">
+        <span id="typedText"></span>
+      </div>
 
-        <!-- Title -->
-        <section class="hero">
+      <div class="starry">
+        <div class="eye left-eye"></div>
+        <div class="eye right-eye"></div>
+        <div class="cheek left-cheek"></div>
+        <div class="cheek right-cheek"></div>
+        <div class="mouth"></div>
+      </div>
+    </section>
 
-            <h1 class="logo">
-                MOODZ
-                <span>LOUNGE</span>
-            </h1>
+    <nav class="menu hidden" id="menu">
+      <a href="start.html">▶ Start Journey</a>
+      <a href="journal.html">📖 Journal</a>
+      <a href="boost.html">🌸 Daily Boost</a>
+      <a href="breathe.html">🍃 Breathe</a>
+      <a href="music.html">🎵 Relax</a>
+      <a href="help.html">💛 Crisis Help</a>
+    </nav>
 
-            <p class="tagline">
-                Take What You Need Today
-            </p>
+  </main>
 
-        </section>
-
-        <!-- Starry -->
-        <section class="starry-area">
-
-            <div class="speech-bubble">
-                <span id="typedText"></span>
-            </div>
-
-            <!-- Temporary Placeholder -->
-            <div class="starry-sprite">
-                😊
-            </div>
-
-        </section>
-
-        <!-- Menu -->
-        <nav class="menu">
-
-            <a href="meet-starry.html">Start</a>
-
-            <a href="journal.html">Journal</a>
-
-            <a href="daily-boost.html">Daily Boost</a>
-
-            <a href="music.html">Music</a>
-
-            <a href="breathe.html">Breathe</a>
-
-            <a href="settings.html">Settings</a>
-
-        </nav>
-
-    </main>
-
-    <script src="js/main.js"></script>
-
+  <script src="js/main.js"></script>
 </body>
-
 </html>
