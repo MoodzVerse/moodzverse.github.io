@@ -1,114 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moodz Lounge</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moodz</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Pixel Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
 
-<!-- Animated Sky -->
-<div id="sky">
+  <div class="game-screen">
 
-    <div id="moon"></div>
+    <div class="stars"></div>
 
-    <div id="stars"></div>
-
-    <div id="clouds"></div>
-
-    <div id="city"></div>
-
-</div>
-
-<!-- Main Window -->
-
-<div id="window">
-
-    <header>
-
-        <h1>
-            MOODZ
-            <span>LOUNGE</span>
-        </h1>
-
-        <p>
-            Take What You Need Today
-        </p>
-
+    <header class="title-box">
+      <h1>MOODZ</h1>
+      <p>Press Start to Feel Better</p>
     </header>
 
+    <main class="menu-box">
+      <a href="#" class="menu-item active">Take What You Need Today</a>
+      <a href="#" class="menu-item">Moodz Lounge</a>
+      <a href="#" class="menu-item">Journal</a>
+      <a href="#" class="menu-item">About</a>
+    </main>
 
-    <!-- Starry -->
+    <div class="starry">
+      <div class="face">•ᴗ•</div>
+    </div>
 
-    <section id="starry-area">
+  </div>
 
-        <div id="speech">
-
-            <p id="typing"></p>
-
-        </div>
-
-        <div id="starry">
-
-            <!-- Sprite goes here later -->
-
-            <div id="placeholder">
-
-                ⭐
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Menu -->
-
-    <nav id="menu">
-
-        <button>
-            🎮 START JOURNEY
-        </button>
-
-        <button>
-            📖 JOURNAL
-        </button>
-
-        <button>
-            🌸 DAILY BOOST
-        </button>
-
-        <button>
-            🍃 BREATHE
-        </button>
-
-        <button>
-            🎵 RELAX
-        </button>
-
-        <button>
-            ❤️ CRISIS HELP
-        </button>
-
-    </nav>
-
-</div>
-
-<!-- Sparkles -->
-
-<div id="particles"></div>
-
-<script src="script.js"></script>
-
+  <script src="js/main.js"></script>
 </body>
 </html>
