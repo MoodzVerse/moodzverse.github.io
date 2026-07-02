@@ -1,36 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moodz</title>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
+body {
+    background: #05081d;
+    font-family: "Courier New", monospace;
+    overflow: hidden;
+}
 
-  <div class="game-screen">
+.game-screen {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(to bottom, #07113d 0%, #12002d 60%, #000814 100%);
+}
 
-    <div class="stars"></div>
+/* Twinkling stars */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(white 2px, transparent 2px),
+        radial-gradient(#8be9fd 2px, transparent 2px),
+        radial-gradient(#ff79c6 2px, transparent 2px);
+    background-size: 150px 150px, 250px 250px, 350px 350px;
+    animation: twinkle 4s infinite alternate;
+}
 
-    <header class="title-box">
-      <h1>MOODZ</h1>
-      <p>Press Start to Feel Better</p>
-    </header>
+@keyframes twinkle {
+    from {
+        opacity: .4;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
-    <main class="menu-box">
-      <a href="#" class="menu-item active">Take What You Need Today</a>
-      <a href="#" class="menu-item">Moodz Lounge</a>
-      <a href="#" class="menu-item">Journal</a>
-      <a href="#" class="menu-item">About</a>
-    </main>
+.title-box {
+    text-align: center;
+    color: white;
+    padding-top: 70px;
+    position: relative;
+    z-index: 2;
+}
 
-    <div class="starry">
-      <div class="face">•ᴗ•</div>
-    </div>
+.title-box h1 {
+    font-size: 70px;
+    letter-spacing: 6px;
+    color: #6cf5ff;
+    text-shadow: 0 0 12px #6cf5ff;
+}
 
-  </div>
+.title-box p {
+    color: #ffffff;
+    margin-top: 10px;
+    font-size: 20px;
+}
 
-  <script src="js/main.js"></script>
-</body>
-</html>
+.menu-box {
+    width: 420px;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+    z-index: 2;
+}
+
+.menu-item {
+    text-decoration: none;
+    color: white;
+    font-size: 26px;
+    padding: 15px;
+    border: 3px solid #6cf5ff;
+    background: rgba(0,0,0,.35);
+    transition: .25s;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background: #6cf5ff;
+    color: #08102f;
+    transform: scale(1.05);
+}
+
+.starry {
+    position: absolute;
+    right: 120px;
+    bottom: 90px;
+    width: 120px;
+    height: 120px;
+    background: #ffe066;
+    clip-path: polygon(
+        50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%,
+        50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
+    );
+    animation: float 2s ease-in-out infinite;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 45px;
+    font-size: 18px;
+}
+
+@keyframes float {
+    0%,100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
